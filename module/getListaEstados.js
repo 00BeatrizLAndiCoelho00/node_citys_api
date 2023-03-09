@@ -5,7 +5,6 @@
 const getListaDeEstados = function(){
 
    siglas = {}
-
    let arraySiglas = []
 
    estadosCidades.estados.forEach(estados => {
@@ -13,7 +12,6 @@ const getListaDeEstados = function(){
    })
 
    siglas.uf = arraySiglas
-
    return siglas
 }
 
@@ -21,5 +19,5 @@ console.log(getListaDeEstados())
 
 
 module.exports ={
-   
+   getListaDeEstados
 }
