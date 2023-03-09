@@ -1,18 +1,25 @@
 
-/* ____________________________TESTE____________________________________________________________________*/
  const { estadosCidades } = require("./estados_cidades")
 
-// const genericFunction = function (a,b){
-//    return a + b
-// }
 
-// //console.log(genericFunction(1,2))
+const getListaDeEstados = function(){
 
-/* _____________________________________________________________________________________________________*/
+   siglas = {}
 
+   let arraySiglas = []
 
-console.log(estadosCidades)
+   estadosCidades.estados.forEach(estados => {
+      arraySiglas.push(estados.sigla)
+   })
+
+   siglas.uf = arraySiglas
+
+   return siglas
+}
+
+console.log(getListaDeEstados())
+
 
 module.exports ={
-   // genericFunction
+   
 }
