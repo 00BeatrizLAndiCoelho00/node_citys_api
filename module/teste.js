@@ -49,24 +49,32 @@ const { estadosCidades } = require("./estados_cidades")
 //CHECAR SE A REGIAO E IGUA A B 
 
 
-array = []
-array2 =[]
-cont = 0
-while(cont < 27){
-    
-   array.push(estadosCidades.estados[cont].regiao)
-     cont++
-}
+ const getCapitalPais = function (){
+    const listaJson = {}
+    const listaArry = []
 
-console.log(array)
+    estadosCidades.estados.forEach(function(dados){
 
-if(array.indexOf("Suldeste")){
-console.log("s")
-}
+        if(dados.capital_pais != undefined){
+            listaArry.push({
+                capital_atual:dados.capital_pais.capital,
+                uf:dados.sigla,
+                descricao:dados.nome,
+                capital:dados.capital,
+                regiao:dados.regiao,
+                capital_pais_ano_inicio:dados.capital_pais.ano_inicio,
+                capital_pais_ano_termino:dados.capital_pais.ano_fim
 
-console.log(array2)
 
+            })
+            listaJson.capitais = listaArry
+        }
 
+    })
+    return listaJson
+ }
+
+ console.log(getCapitalPais())
 
 
 
