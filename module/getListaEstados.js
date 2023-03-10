@@ -1,5 +1,5 @@
 
- const { estadosCidades } = require("./estados_cidades")
+const { estadosCidades } = require("./estados_cidades")
 
 
 const getListaDeEstados = function(){
@@ -12,10 +12,13 @@ const getListaDeEstados = function(){
    })
 
    siglas.uf = arraySiglas
+
+
    return siglas
 }
 
 console.log(getListaDeEstados())
+
 
 
 module.exports ={

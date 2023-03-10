@@ -15,14 +15,15 @@ const { estadosCidades } = require("./estados_cidades")
  console.log(nomeGenerico())
 
 
- json2 = {}
+//  json2 = {}
 
- let b = ["carol", "carla"]
+//  let b = ["carol", "carla"]
 
- json2.a = b
+//  json2.a = b
 
- console.log(b.indexOf("carol"))
+//  console.log(b.indexOf("carol"))
 
+//  console.log(estadosCidades.estados.indexOf("sp"))
 
 
 // const generica2 = function(a){

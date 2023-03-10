@@ -3,14 +3,21 @@ const { estadosCidades } = require("./estados_cidades")
 
 const getCapitalEstado = function(a){
 
-    // 
+    let arraySiglas = []
 
-    jsonGetCapitalEstado = {}
+    estadosCidades.estados.forEach(estados => {
+       arraySiglas.push(estados.sigla)
+    })
 
-    jsonGetCapitalEstado.uf = estadosCidades.estados[a].sigla
-    jsonGetCapitalEstado.descricao = estadosCidades.estados[a].nome
-    jsonGetCapitalEstado .capital = estadosCidades.estados[a].capital
+    b = arraySiglas.indexOf(a) 
+    
+   jsonGetCapitalEstado = {}
+
+    jsonGetCapitalEstado.uf = estadosCidades.estados[b].sigla
+    jsonGetCapitalEstado.descricao = estadosCidades.estados[b].nome
+    jsonGetCapitalEstado .capital = estadosCidades.estados[b].capital
 
     return  jsonGetCapitalEstado 
+    
 }
-console.log(getCapitalEstado(2))
+console.log(getCapitalEstado("RJ"))
