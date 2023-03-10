@@ -9,6 +9,19 @@ const getDadosEstado = function(a){
        arraySiglas.push(estados.sigla)
     })
 
+
+
+
+
+    estadosCidades.estados.forEach(estados=>{
+        
+    })
+
+
+    estadosCidades.estados.forEach(estados => {
+        arraySiglas.push(estados.sigla)
+     })
+
     b = arraySiglas.indexOf(a) 
     
    jsonGetDadosEstado = {}
@@ -17,6 +30,10 @@ const getDadosEstado = function(a){
    jsonGetDadosEstado.descricao = estadosCidades.estados[b].nome
    jsonGetDadosEstado.capital = estadosCidades.estados[b].capital
    jsonGetDadosEstado.regiao = estadosCidades.estados[b].regiao
+
+
+
+
 
     return jsonGetDadosEstado
     
