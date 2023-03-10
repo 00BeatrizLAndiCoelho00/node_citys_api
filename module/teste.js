@@ -49,40 +49,42 @@ const { estadosCidades } = require("./estados_cidades")
 //CHECAR SE A REGIAO E IGUA A B 
 
 
- const getCapitalPais = function (){
+
+
+
+
+
+
+
+
+
+const getCidades = function (siglaEstados){
     const listaJson = {}
     const listaArry = []
 
     estadosCidades.estados.forEach(function(dados){
 
-        if(dados.capital_pais != undefined){
-            listaArry.push({
-                capital_atual:dados.capital_pais.capital,
-                uf:dados.sigla,
-                descricao:dados.nome,
-                capital:dados.capital,
-                regiao:dados.regiao,
-                capital_pais_ano_inicio:dados.capital_pais.ano_inicio,
-                capital_pais_ano_termino:dados.capital_pais.ano_fim
-
+        if(siglaEstados == dados.sigla){
+            dados.cidades.forEach(function(dadosCidades){
+                listaArry.push(dadosCidades.nome)
 
             })
-            listaJson.capitais = listaArry
+            
+            listaJson.uf = dados.sigla
+            listaJson.descricao = dados.nome
+            listaJson.quantidade = listaArry.length
+            listaJson.cidades = listaArry
+
         }
-
+      
+       
     })
+
     return listaJson
- }
+    }
 
- console.log(getCapitalPais())
-
-
-
-
-
-
-
-
+    console.log(getCidades("SP"))
+    
 
 
 
