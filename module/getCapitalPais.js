@@ -1,12 +1,14 @@
+const { estadosCidades } = require("./estados_cidades")
+
 
 const getCapitalPais = function (){
-    const listaJson = {}
-    const listaArry = []
+    const jsonCapitalPais = {}
+    const arrayCapitalPais = []
 
     estadosCidades.estados.forEach(function(dados){
 
         if(dados.capital_pais != undefined){
-            listaArry.push({
+            arrayCapitalPais.push({
                 capital_atual:dados.capital_pais.capital,
                 uf:dados.sigla,
                 descricao:dados.nome,
@@ -17,11 +19,11 @@ const getCapitalPais = function (){
 
 
             })
-            listaJson.capitais = listaArry
+            jsonCapitalPais.capitais = arrayCapitalPais
         }
 
     })
-    return listaJson
+    return jsonCapitalPais
  }
 
  console.log(getCapitalPais())
