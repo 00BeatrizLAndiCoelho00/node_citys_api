@@ -1,35 +1,60 @@
-// const nomeGenerico = function(){
-
 const { estadosCidades } = require("./estados_cidades")
+ const nomeGenerico = function(){
+
+     jsonGenerico = {}
+
+     let a = ["joana"]
+
+     a.push('Alexandre')
+ 
+     jsonGenerico.uf = a
+
+
+     return jsonGenerico
+ }
+ console.log(nomeGenerico())
+
+
+ json2 = {}
+
+ let b = ["carol", "carla"]
+
+ json2.a = b
+
+ console.log(b.indexOf("carol"))
+
+
+
+// const generica2 = function(a){
 
 //     jsonGenerico = {}
 
-//     let a = []
-
-//     a.push('Alexandre')
- 
-//     jsonGenerico.uf = a
+//     jsonGenerico.uf = estadosCidades.estados[a].sigla
+//     jsonGenerico.descricao = estadosCidades.estados[a].nome
+//     jsonGenerico.capital = estadosCidades.estados[a].capital
 
 //     return jsonGenerico
 // }
-// console.log(nomeGenerico())
+// console.log(generica2(7))
 
 
-// const generica = function(variavel){
 
- 
+   
 
-//     return jsonMaisGenerico
+
+// console.log(filtro("SP"))
+
+
+// module.exports ={
+//     filtro
 // }
-// console.log(generica(a))
 
-const matematica = function(a){
+// siglas = {}
+//    let arraySiglas = []
 
-    (listaProdutos.indexOf('fone')>= 0 )
-    
-    jsonMaisGenerico  = {estadosCidades}
+//    estadosCidades.estados.forEach(estados => {
+//       arraySiglas.push(estados.sigla)
+//    })
 
-
-    return jsonMaisGenerico
-}
-console.log(matematica("sp"))
+//    siglas.uf = arraySiglas
+//    return siglas
