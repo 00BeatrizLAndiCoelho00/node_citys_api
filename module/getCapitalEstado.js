@@ -15,7 +15,7 @@ const getCapitalEstado = function(a){
 
     jsonGetCapitalEstado.uf = estadosCidades.estados[b].sigla
     jsonGetCapitalEstado.descricao = estadosCidades.estados[b].nome
-    jsonGetCapitalEstado .capital = estadosCidades.estados[b].capital
+    jsonGetCapitalEstado.capital = estadosCidades.estados[b].capital
 
     return  jsonGetCapitalEstado 
     
