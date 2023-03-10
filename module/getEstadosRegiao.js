@@ -41,3 +41,7 @@ const getEstadosRegiao = function(a){
     return jsonRegiao
 }
 console.log(getEstadosRegiao("Sudeste"))
+
+module.exports ={
+    getEstadosRegiao
+ }

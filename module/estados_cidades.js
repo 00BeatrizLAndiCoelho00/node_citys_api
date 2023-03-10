@@ -22487,9 +22487,22 @@ var estadosCidades = {
  
 
 
+  const getListaDeEstados = function(){
+  
+     siglas = {}
+     let arraySiglas = []
+  
+     estadosCidades.estados.forEach(estados => {
+        arraySiglas.push(estados.sigla)
+     })
+  
+     siglas.uf = arraySiglas
+     return siglas
+  }
 
   module.exports ={
-    estadosCidades
+
+    getListaDeEstados
   }
 //   const { genericFunction } = require("./functions");
 

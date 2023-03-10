@@ -9,15 +9,6 @@ const getDadosEstado = function(a){
        arraySiglas.push(estados.sigla)
     })
 
-
-
-
-
-    estadosCidades.estados.forEach(estados=>{
-        
-    })
-
-
     estadosCidades.estados.forEach(estados => {
         arraySiglas.push(estados.sigla)
      })
@@ -39,4 +30,8 @@ const getDadosEstado = function(a){
     
 }
 console.log(getDadosEstado("RJ"))
+
+module.exports ={
+    getDadosEstado
+}
 

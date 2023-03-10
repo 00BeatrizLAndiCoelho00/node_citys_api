@@ -38,66 +38,7 @@ const { estadosCidades } = require("./estados_cidades")
 // }
 // console.log(generica2(7))
 
-
-
-
-
-
-
-
-
 //CHECAR SE A REGIAO E IGUA A B 
-
-
-
-
-
-
-
-
-
-
-
-const getCidades = function (siglaEstados){
-    const listaJson = {}
-    const listaArry = []
-
-    estadosCidades.estados.forEach(function(dados){
-
-        if(siglaEstados == dados.sigla){
-            dados.cidades.forEach(function(dadosCidades){
-                listaArry.push(dadosCidades.nome)
-
-            })
-            
-            listaJson.uf = dados.sigla
-            listaJson.descricao = dados.nome
-            listaJson.quantidade = listaArry.length
-            listaJson.cidades = listaArry
-
-        }
-      
-       
-    })
-
-    return listaJson
-    }
-
-    console.log(getCidades("SP"))
-    
-
-
-
-
-
-
-
-
-
-
-
-   
-
 
 // console.log(filtro("SP"))
 
@@ -115,3 +56,5 @@ const getCidades = function (siglaEstados){
 
 //    siglas.uf = arraySiglas
 //    return siglas
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////

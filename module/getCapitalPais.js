@@ -27,3 +27,7 @@ const getCapitalPais = function (){
  }
 
  console.log(getCapitalPais())
+
+ module.exports ={
+    getCapitalPais
+ }

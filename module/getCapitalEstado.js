@@ -21,3 +21,7 @@ const getCapitalEstado = function(a){
     
 }
 console.log(getCapitalEstado("RJ"))
+
+module.exports ={
+    getCapitalEstado
+ }

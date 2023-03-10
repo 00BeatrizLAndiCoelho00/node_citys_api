@@ -17,4 +17,7 @@ const getListaDeEstados = function(){
 
 console.log(getListaDeEstados())
 
+module.exports ={
+   getListaDeEstados
+}
 

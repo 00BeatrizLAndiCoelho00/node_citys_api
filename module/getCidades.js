@@ -28,3 +28,7 @@ const getCidades = function (a){
     }
 
     console.log(getCidades("SP"))
+
+    module.exports ={
+        getCidades
+     }
