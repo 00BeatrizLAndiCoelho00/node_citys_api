@@ -153,7 +153,34 @@ app.get('/capital/sigla/:uf', cors(),async function(request,response,next){
     response.json(dadosEstado)
     console.log(siglaEstadoCapital)
 })
-//________________________________________________________________________________________________________________________________________________________________//
+//____________________________________________________Get estado regiao____________________________________________________________________________________________________________//
+
+//_____________________________________________________Get capital pais____________________________________________________________________________________________________________//
+
+app.get('/pais', cors(),async function(request,response,next){
+
+    //import arquivo funcoes
+    const capitalPais = require('./module/estados_cidades.js')
+  
+    //chama funcao que retorna os estados
+    let listaDeCapitaiDoPais = capitalPais.getCapitalPais()
+    if(listaDeCapitaiDoPais){
+
+    //retorna o json
+    response.json(listaDeCapitaiDoPais)
+    response.status(200)
+    }else{
+        response.status(500)
+    }
+
+
+})
+//___________________________________________________________________________________________________________________________________________________________________//
+
+
+
+//____________________________________________________________________________________________________________________________________________________________________//
+
 
 //vai caregar o endpoints vai aguardar a requisiscao
     app.listen(8080,function(){
