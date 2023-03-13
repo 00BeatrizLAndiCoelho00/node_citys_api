@@ -22500,9 +22500,37 @@ var estadosCidades = {
      return siglas
   }
 
+
+  //______________________________________________________________________________________________________________________________//
+
+
+const getDadosEstado = function(a){
+
+    let arraySiglas = []
+
+    estadosCidades.estados.forEach(estados => {
+       arraySiglas.push(estados.sigla)
+    })
+
+    b = arraySiglas.indexOf(a) 
+    
+   jsonGetDadosEstado = {}
+
+   jsonGetDadosEstado.uf = estadosCidades.estados[b].sigla
+   jsonGetDadosEstado.descricao = estadosCidades.estados[b].nome
+   jsonGetDadosEstado.capital = estadosCidades.estados[b].capital
+   jsonGetDadosEstado.regiao = estadosCidades.estados[b].regiao
+
+    return jsonGetDadosEstado
+    
+}
+console.log(getDadosEstado("RJ"))
+
+
   module.exports ={
 
-    getListaDeEstados
+    getListaDeEstados,
+    getDadosEstado
   }
 //   const { genericFunction } = require("./functions");
 

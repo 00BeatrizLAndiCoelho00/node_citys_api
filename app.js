@@ -7,7 +7,6 @@
  * 
  * ______________________________________________________________________________________________________________________________________________________________________//
  * 
- * 
  * Express - permite a integraçao entre http com o codigo 
  * npm install express --save
  * 
@@ -31,6 +30,11 @@ const cors = require('cors')
 //BODY-PARSE responsaveis pela manipulaçao do body da requisiçao
 const bodyParser = require('body-parser')
 
+
+//import json
+const estadosCidade = require('./module/estados_cidades.js');
+const { json } = require('body-parser');
+
 //cria um objt com as info da classe express
 const app = express();
 
@@ -53,7 +57,7 @@ const app = express();
 
         next()
     })
-//_______________________________________________________________________________________________________________________//
+//______________________________________________GET LISTA ESTADOS_________________________________________________________________________//
     //endpoint
     //para cada requisicao cria -se um ebdpoint 
     //cada funcao cria se um endpoint 
@@ -63,16 +67,64 @@ const app = express();
     //endPoint para listar os estados:
     app.get('/estados', cors(),async function(request,response,next){
 
-
+        //import arquivo funcoes
         const estadosCidade = require('./module/estados_cidades.js')
       
-        let listaDeEstados = estadosCidade.getListaDeEstados();
+        //chama funcao que retorna os estados
+        let listaDeEstados = estadosCidade.getListaDeEstados()
+        if(listaDeEstados){
 
+        //retorna o json
         response.json(listaDeEstados)
         response.status(200)
+        }else{
+            response.status(500)
+        }
+
+
     })
 
-    //vai caregar o endpoints vai aguardar a requisiscao
+//______________________________________________Get dados estado_______________________________________________________________________//
+
+//url amigavel falam o que vao retornar 
+//o depois da barra q tem dois pontos e uma variavel 
+app.get('/estado/sigla/:uf', cors(),async function(request,response,next){
+
+    //colocar id na ur para saber o que esta sendo passado
+    //colocase se um identificador da string
+    //cria se uma variavel local que 
+    let siglaEstado = request.params.uf
+    let statusCode
+    let dadosEstado = {}
+
+    if(siglaEstado == '' || siglaEstado == undefined || !isNaN(siglaEstado) || siglaEstado.length !=2 ){
+    
+        statusCode = 400
+        dadosEstado.message = "Nâo é possivel processar a requisição pois a sigla do estado não foi  informada ou não etende  a quantidade de caracteres(dois digitos)"
+        
+    }else{
+        //filtra estadp pela sigla 
+       let estado = estadosCidade.getDadosEstado(siglaEstado)
+
+        //valida retorno valido da funcao 
+        if(estado){
+            statusCode = 200
+            dadosEstado = estado
+            //response.json(estado)
+        }else{
+            statusCode = 404
+
+        }     
+    }
+
+    response.status(statusCode)
+    response.json(dadosEstado)
+  //  console.log(siglaEstado)
+})
+
+
+
+//vai caregar o endpoints vai aguardar a requisiscao
     app.listen(8080,function(){
         console.log("Server aguardando requisiçoes")
     })
