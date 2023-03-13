@@ -22524,13 +22524,36 @@ const getDadosEstado = function(a){
     return jsonGetDadosEstado
     
 }
-console.log(getDadosEstado("RJ"))
+//console.log(getDadosEstado("RJ"))
 
+//________________________________________________________________________________________________________________________________________//
+
+
+const getCapitalEstado = function(a){
+
+  let arraySiglas = []
+
+  estadosCidades.estados.forEach(estados => {
+     arraySiglas.push(estados.sigla)
+  })
+
+  b = arraySiglas.indexOf(a) 
+  
+ jsonGetCapitalEstado = {}
+
+  jsonGetCapitalEstado.uf = estadosCidades.estados[b].sigla
+  jsonGetCapitalEstado.descricao = estadosCidades.estados[b].nome
+  jsonGetCapitalEstado.capital = estadosCidades.estados[b].capital
+
+  return  jsonGetCapitalEstado 
+  
+}
 
   module.exports ={
 
     getListaDeEstados,
-    getDadosEstado
+    getDadosEstado,
+    getCapitalEstado
   }
 //   const { genericFunction } = require("./functions");
 

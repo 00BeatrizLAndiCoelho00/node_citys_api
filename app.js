@@ -122,7 +122,38 @@ app.get('/estado/sigla/:uf', cors(),async function(request,response,next){
   //  console.log(siglaEstado)
 })
 
+//___________________________________________Get capital estado__________________________________________________________________________________________________//
+app.get('/capital/sigla/:uf', cors(),async function(request,response,next){
 
+    let siglaEstadoCapital = request.params.uf
+    let statusCode
+    let dadosEstado = {}
+
+    if(siglaEstadoCapital == '' || siglaEstadoCapital == undefined || !isNaN(siglaEstadoCapital) || siglaEstadoCapital.length !=2 ){
+    
+        statusCode = 400
+        dadosEstado.message = "Nâo é possivel processar a requisição pois a sigla do estado não foi  informada ou não etende  a quantidade de caracteres(dois digitos)"
+        
+    }else{
+        //filtra estadp pela sigla 
+       let estado = estadosCidade.getCapitalEstado(siglaEstadoCapital)
+
+        //valida retorno valido da funcao 
+        if(estado){
+            statusCode = 200
+            dadosEstado = estado
+            //response.json(estado)
+        }else{
+            statusCode = 404
+
+        }     
+    }
+
+    response.status(statusCode)
+    response.json(dadosEstado)
+    console.log(siglaEstadoCapital)
+})
+//________________________________________________________________________________________________________________________________________________________________//
 
 //vai caregar o endpoints vai aguardar a requisiscao
     app.listen(8080,function(){
