@@ -175,8 +175,38 @@ app.get('/pais', cors(),async function(request,response,next){
 
 
 })
-//___________________________________________________________________________________________________________________________________________________________________//
+//________________________________________________________Get  cidades___________________________________________________________________________________________________________//
 
+app.get('/cidades/sigla/:uf', cors(),async function(request,response,next){
+
+    let siglaEstadoCapital = request.params.uf
+    let statusCode
+    let dadosEstado = {}
+
+    if(siglaEstadoCapital == '' || siglaEstadoCapital == undefined || !isNaN(siglaEstadoCapital) || siglaEstadoCapital.length !=2 ){
+    
+        statusCode = 400
+        dadosEstado.message = "Nâo é possivel processar a requisição pois a sigla do estado não foi  informada ou não etende  a quantidade de caracteres(dois digitos)"
+        
+    }else{
+        //filtra estadp pela sigla 
+       let estado = estadosCidade.getCidades(siglaEstadoCapital)
+
+        //valida retorno valido da funcao 
+        if(estado){
+            statusCode = 200
+            dadosEstado = estado
+            //response.json(estado)
+        }else{
+            statusCode = 404
+
+        }     
+    }
+
+    response.status(statusCode)
+    response.json(dadosEstado)
+    console.log(siglaEstadoCapital)
+})
 
 
 //____________________________________________________________________________________________________________________________________________________________________//

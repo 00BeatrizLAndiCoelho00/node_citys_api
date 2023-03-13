@@ -22582,12 +22582,41 @@ const getCapitalPais = function (){
 
 //_________________________________________________________________________________________________________________________________________________//
 
+
+const getCidades = function (a){
+  const jsonCidades = {}
+  const arrayCidades = []
+
+  estadosCidades.estados.forEach(function(info){
+
+      if(a == info.sigla){
+          info.cidades.forEach(function(dadosCidades){
+              arrayCidades.push(dadosCidades.nome)
+
+          })
+          
+          jsonCidades.uf = info.sigla
+          jsonCidades.descricao = info.nome
+          jsonCidades.quantidade = arrayCidades.length
+          jsonCidades.cidades = arrayCidades
+
+      }
+    
+     
+  })
+
+  return jsonCidades
+  }
+
+//______________________________________________________________________________________________________________________________________________//
+
   module.exports ={
 
     getListaDeEstados,
     getDadosEstado,
     getCapitalEstado,
-    getCapitalPais
+    getCapitalPais,
+    getCidades
   }
 //   const { genericFunction } = require("./functions");
 
