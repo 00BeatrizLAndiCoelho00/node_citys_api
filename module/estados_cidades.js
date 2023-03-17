@@ -22493,7 +22493,7 @@ var estadosCidades = {
      let arraySiglas = []
   
      estadosCidades.estados.forEach(estados => {
-        arraySiglas.push(estados.sigla)
+        arraySiglas.push(estados.siglas)
      })
   
      siglas.uf = arraySiglas
@@ -22507,13 +22507,17 @@ var estadosCidades = {
 const getDadosEstado = function(a){
 
     let arraySiglas = []
+ 
 
     estadosCidades.estados.forEach(estados => {
        arraySiglas.push(estados.sigla)
+
     })
 
-    b = arraySiglas.indexOf(a) 
+    b = arraySiglas.indexOf(a.toUpperCase()) 
+
     
+
    jsonGetDadosEstado = {}
 
    jsonGetDadosEstado.uf = estadosCidades.estados[b].sigla
@@ -22521,10 +22525,10 @@ const getDadosEstado = function(a){
    jsonGetDadosEstado.capital = estadosCidades.estados[b].capital
    jsonGetDadosEstado.regiao = estadosCidades.estados[b].regiao
 
-    return jsonGetDadosEstado
-    
+   
 }
-//console.log(getDadosEstado("RJ"))
+
+
 
 //________________________________________________________________________________________________________________________________________//
 
@@ -22537,7 +22541,7 @@ const getCapitalEstado = function(a){
      arraySiglas.push(estados.sigla)
   })
 
-  b = arraySiglas.indexOf(a) 
+  b = arraySiglas.indexOf(a.toUpperCase()) 
   
  jsonGetCapitalEstado = {}
 
@@ -22589,7 +22593,7 @@ const getCidades = function (a){
 
   estadosCidades.estados.forEach(function(info){
 
-      if(a == info.sigla){
+      if(a.toUpperCase() == info.sigla){
           info.cidades.forEach(function(dadosCidades){
               arrayCidades.push(dadosCidades.nome)
 
@@ -22621,3 +22625,4 @@ const getCidades = function (a){
 //   const { genericFunction } = require("./functions");
 
 //   console.log(genericFunction(1,2))
+

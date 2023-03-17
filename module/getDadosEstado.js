@@ -22,16 +22,10 @@ const getDadosEstado = function(a){
    jsonGetDadosEstado.capital = estadosCidades.estados[b].capital
    jsonGetDadosEstado.regiao = estadosCidades.estados[b].regiao
 
-
-
-
-
     return jsonGetDadosEstado
     
 }
-console.log(getDadosEstado("RJ"))
+console.log(getDadosEstado("MG"))
 
-module.exports ={
-    getDadosEstado
-}
+
 

@@ -65,7 +65,7 @@ const app = express();
     //em todos os argumentos dos endpont coloca se os argumentos do app.use
 
     //endPoint para listar os estados:
-    app.get('/estados', cors(),async function(request,response,next){
+    app.get('/v1/senai/estados', cors(),async function(request,response,next){
 
         //import arquivo funcoes
         const estadosCidade = require('./module/estados_cidades.js')
@@ -88,7 +88,7 @@ const app = express();
 
 //url amigavel falam o que vao retornar 
 //o depois da barra q tem dois pontos e uma variavel 
-app.get('/estado/sigla/:uf', cors(),async function(request,response,next){
+app.get('/v1/senai/estado/sigla/:uf', cors(),async function(request,response,next){
 
     //colocar id na ur para saber o que esta sendo passado
     //colocase se um identificador da string
@@ -123,7 +123,7 @@ app.get('/estado/sigla/:uf', cors(),async function(request,response,next){
 })
 
 //___________________________________________Get capital estado__________________________________________________________________________________________________//
-app.get('/capital/sigla/:uf', cors(),async function(request,response,next){
+app.get('/v1/senai/capital/sigla/:uf', cors(),async function(request,response,next){
 
     let siglaEstadoCapital = request.params.uf
     let statusCode
@@ -157,7 +157,7 @@ app.get('/capital/sigla/:uf', cors(),async function(request,response,next){
 
 //_____________________________________________________Get capital pais____________________________________________________________________________________________________________//
 
-app.get('/pais', cors(),async function(request,response,next){
+app.get('/v1/senai/pais', cors(),async function(request,response,next){
 
     //import arquivo funcoes
     const capitalPais = require('./module/estados_cidades.js')
@@ -177,20 +177,66 @@ app.get('/pais', cors(),async function(request,response,next){
 })
 //________________________________________________________Get  cidades___________________________________________________________________________________________________________//
 
-app.get('/cidades/sigla/:uf', cors(),async function(request,response,next){
+// app.get('/cidades/sigla/:uf', cors(),async function(request,response,next){
 
-    let siglaEstadoCapital = request.params.uf
-    let statusCode
+//     let siglaCidade = request.params.uf
+//     let statusCode
+//     let dadosEstado = {}
+
+//     if(siglaCidade == '' || siglaCidade == undefined || !isNaN(siglaCidade) || siglaCidade.length !=2 ){
+    
+//         statusCode = 400
+//         dadosEstado.message = "Nâo é possivel processar a requisição pois a sigla do estado não foi  informada ou não etende  a quantidade de caracteres(dois digitos)"
+        
+//     }else{
+//         //filtra estadp pela sigla 
+//        let estado = estadosCidade.getCidades(siglaCidade)
+
+//         //valida retorno valido da funcao 
+//         if(estado){
+//             statusCode = 200
+//             dadosEstado = estado
+//             //response.json(estado)
+//         }else{
+//             statusCode = 404
+
+//         }     
+//     }
+
+//     response.status(statusCode)
+//     response.json(dadosEstado)
+//     console.log(siglaCidade)
+// })
+
+
+//_________________________________________________________________Get cidade 2___________________________________________________________________________________________________//
+
+//nome do endpoit o q ele vai receber
+//este recebe mais parametros
+
+app.get('/v1/senai/cidades', cors(), async function(request,response, next){
+
+    //querry string o valor da variavel que sra enviada pr querry string 
+    //[-1]
+    //o que tem antes do pnto de interogacao e indereço do site , oq eu divide as coisas passadas sao o e comercial &
+
+    //usamos a query para receber diversas variaveis para realizar filtros
+    //usamos o parmar para receber id
+    //nome do enpoint começ com a versao / nome empresa
+
+
+    let siglaCidade = request.query.uf
+        let statusCode
     let dadosEstado = {}
 
-    if(siglaEstadoCapital == '' || siglaEstadoCapital == undefined || !isNaN(siglaEstadoCapital) || siglaEstadoCapital.length !=2 ){
+    if(siglaCidade == '' || siglaCidade == undefined || !isNaN(siglaCidade) || siglaCidade.length !=2 ){
     
         statusCode = 400
         dadosEstado.message = "Nâo é possivel processar a requisição pois a sigla do estado não foi  informada ou não etende  a quantidade de caracteres(dois digitos)"
         
     }else{
         //filtra estadp pela sigla 
-       let estado = estadosCidade.getCidades(siglaEstadoCapital)
+       let estado = estadosCidade.getCidades(siglaCidade)
 
         //valida retorno valido da funcao 
         if(estado){
@@ -205,13 +251,12 @@ app.get('/cidades/sigla/:uf', cors(),async function(request,response,next){
 
     response.status(statusCode)
     response.json(dadosEstado)
-    console.log(siglaEstadoCapital)
+    console.log(siglaCidade)
 })
 
 
-//____________________________________________________________________________________________________________________________________________________________________//
 
-
+//_______________________________________________________________________________________________________________//
 //vai caregar o endpoints vai aguardar a requisiscao
     app.listen(8080,function(){
         console.log("Server aguardando requisiçoes")
